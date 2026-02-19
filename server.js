@@ -51,6 +51,10 @@ app.post('/entries', async (req, res) => {
   res.status(201).json(data);
 });
 
-app.listen(PORT, () => {
-  console.log(`Guestbook running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Guestbook running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
