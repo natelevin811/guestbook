@@ -25,7 +25,7 @@ function createEntryCard(entry) {
   card.innerHTML = `
     <div class="entry-header">
       <span class="entry-name">${escapeHtml(entry.name)}</span>
-      <time class="entry-time" datetime="${entry.timestamp}">${formatDate(entry.timestamp)}</time>
+      <time class="entry-time" datetime="${entry.created_at}">${formatDate(entry.created_at)}</time>
     </div>
     <p class="entry-message">${escapeHtml(entry.message)}</p>
   `;
