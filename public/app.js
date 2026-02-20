@@ -46,7 +46,7 @@ function updateCount(n) {
 }
 
 async function loadEntries() {
-  const res = await fetch('/entries');
+  const res = await fetch('/api/entries');
   const entries = await res.json();
   entriesList.innerHTML = '';
   if (entries.length === 0) {
@@ -64,7 +64,7 @@ form.addEventListener('submit', async (e) => {
   submitBtn.textContent = 'Signing…';
 
   try {
-    const res = await fetch('/entries', {
+    const res = await fetch('/api/entries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: nameInput.value, message: messageInput.value }),
@@ -106,7 +106,7 @@ loadEntries();
 let supabaseClient = null;
 
 async function initAuth() {
-  const res = await fetch('/config');
+  const res = await fetch('/api/config');
   const { supabaseUrl, supabaseAnonKey } = await res.json();
   supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
 
