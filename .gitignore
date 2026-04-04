@@ -1,2 +1,5 @@
 node_modules/
 .env
+
+# Ralph config (may contain API keys)
+.cursor/ralph-config.json
