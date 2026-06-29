@@ -3,70 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guestbook</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+  <title>FreeWindow — connect your calendar</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Guestbook</h1>
-      <p class="subtitle">Leave your mark — say hello!</p>
-    </header>
+  <main class="card">
+    <h1>FreeWindow</h1>
+    <p class="tagline">Connect your calendar once. We’ll ping the group when you’re all free.</p>
 
-    <div class="auth-bar">
-      <div id="auth-signed-out">
-        <button type="button" id="show-signin-btn" class="btn-text">Sign In</button>
-      </div>
-      <div id="auth-signed-in" hidden>
-        <span id="auth-email-display" class="auth-email"></span>
-        <button type="button" id="signout-btn" class="btn-text">Sign Out</button>
-      </div>
-    </div>
+    <form id="connect-form">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" placeholder="e.g. Alex" autocomplete="given-name" maxlength="40" required />
+      <button id="connect-btn" type="submit">
+        <span class="g-icon" aria-hidden="true">G</span>
+        Connect Google Calendar
+      </button>
+    </form>
 
-    <div class="signin-panel" id="signin-panel" hidden>
-      <h3>Sign In</h3>
-      <form id="signin-form">
-        <div class="field">
-          <label for="signin-email">Email</label>
-          <input type="email" id="signin-email" placeholder="you@example.com" autocomplete="email" />
-        </div>
-        <div class="field">
-          <label for="signin-password">Password</label>
-          <input type="password" id="signin-password" placeholder="••••••••" autocomplete="current-password" />
-        </div>
-        <div class="auth-actions">
-          <button type="submit" id="signin-submit">Sign In</button>
-          <button type="button" id="cancel-signin" class="btn-ghost">Cancel</button>
-        </div>
-        <p class="error-msg" id="auth-error" hidden></p>
-      </form>
-    </div>
+    <p class="privacy">We only read your <strong>free/busy</strong> times — never event titles or details.</p>
 
-    <section class="form-section">
-      <form id="guestbook-form">
-        <div class="field">
-          <label for="name">Your name</label>
-          <input type="text" id="name" name="name" placeholder="Ada Lovelace" maxlength="80" required />
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Write something nice…" maxlength="500" rows="4" required></textarea>
-        </div>
-        <button type="submit" id="submit-btn">Sign the book</button>
-        <p class="error-msg" id="error-msg" hidden></p>
-      </form>
+    <div id="status" class="status" hidden></div>
+
+    <section id="crew" class="crew" hidden>
+      <h2>Crew connected</h2>
+      <ul id="crew-list"></ul>
     </section>
+  </main>
 
-    <section class="entries-section">
-      <h2>Entries <span id="entry-count" class="count"></span></h2>
-      <div id="entries-list" class="entries-list">
-        <p class="empty-state" id="empty-state">No entries yet — be the first!</p>
-      </div>
-    </section>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

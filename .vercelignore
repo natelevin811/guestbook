@@ -1,7 +1,6 @@
-server.js
-package.json
-package-lock.json
 .env
 node_modules/
 supabase/
-public/
+scripts/
+test/
+.ralph/
