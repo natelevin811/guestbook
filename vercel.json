@@ -1,13 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" },
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "app.js", "use": "@vercel/static" },
-    { "src": "style.css", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/api/entries", "dest": "/api/entries.js" },
-    { "src": "/api/config", "dest": "/api/config.js" }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    { "path": "/api/cron/digest", "schedule": "0 12 * * 0" }
   ]
 }
